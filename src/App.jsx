@@ -1,5 +1,9 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import WorkSection from "./components/WorkSection";
+import AboutSection from "./components/AboutSection";
+import SkillsSection from "./components/SkillsSection";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -7,19 +11,11 @@ function App() {
             <Navbar />
             <main>
                 <HeroSection />
-                <section id="work-section" className="min-h-screen border-t border-border flex items-center justify-center">
-                    <p className="text-secondary">Work Section Placeholder</p>
-                </section>
-                <section id="about-section" className="min-h-screen border-t border-border flex items-center justify-center">
-                    <p className="text-secondary">About Section Placeholder</p>
-                </section>
-                <section id="services" className="min-h-screen border-t border-border flex items-center justify-center">
-                    <p className="text-secondary">Skills Section Placeholder</p>
-                </section>
+                <WorkSection />
+                <AboutSection />
+                <SkillsSection />
             </main>
-            <footer id="footer-background" className="min-h-screen border-t border-border flex items-center justify-center">
-                <p className="text-secondary">Footer Placeholder</p>
-            </footer>
+            <Footer />
         </div>
     );
 }
