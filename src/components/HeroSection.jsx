@@ -76,7 +76,11 @@ export default function HeroSection() {
             >
 
                 {/* Main Content Area */}
-                <div className="flex flex-col lg:flex-row w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 z-10 flex-1 lg:mt-12 xl:mt-16">
+                <div className="flex flex-col lg:flex-row w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 z-10 flex-1 lg:mt-12 xl:mt-16 relative">
+
+                    {/* Glow Blob */}
+                    <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#c8f135] rounded-full opacity-20 blur-[100px] pointer-events-none -z-10 translate-x-1/3 translate-y-1/3"></div>
+                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#c8f135] rounded-full opacity-20 blur-[100px] pointer-events-none -z-10 -translate-x-1/3 -translate-y-1/3"></div>
 
                     <nav className="flex flex-col w-full lg:w-1/2 mb-8 lg:mb-0 justify-center gap-2">
                         {navLinks.map((link, i) => (
@@ -109,15 +113,15 @@ export default function HeroSection() {
 
                     {/* Descriptive Block (Right Side) */}
                     <motion.div
-                        className="w-full lg:w-1/2 flex flex-col justify-center lg:pl-12 xl:pl-24 pb-8 lg:pb-24"
+                        className="w-full lg:w-1/2 flex flex-col justify-center lg:pl-12 xl:pl-24 pb-8 lg:pb-24 relative"
                         variants={textVariants}
                         initial="hidden"
                         animate="visible"
                     >
-                        <h2 className="text-dark font-display text-xl sm:text-2xl md:text-3xl leading-snug tracking-tight font-medium mb-4 max-w-lg">
+                        <h2 className="text-dark font-display text-xl sm:text-2xl md:text-3xl leading-snug tracking-tight font-medium mb-4 max-w-lg relative z-10">
                             Hi, I'm Gadang Jatu Mahiswara.
                         </h2>
-                        <p className="text-dark font-display text-lg sm:text-xl md:text-2xl text-justify leading-snug tracking-tight font-medium max-w-lg">
+                        <p className="text-dark font-display text-lg sm:text-xl md:text-2xl text-justify leading-snug tracking-tight font-medium max-w-lg relative z-10">
                             A Fullstack Developer based in Kediri. Transforming complex ideas into aesthetic, performant, and user-centric digital products.
                         </p>
                     </motion.div>
