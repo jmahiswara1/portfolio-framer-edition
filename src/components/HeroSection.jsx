@@ -71,7 +71,7 @@ export default function HeroSection() {
         <div className="h-screen w-full relative z-0">
             <motion.section
                 id="hero-section"
-                className="fixed top-0 left-0 w-full min-h-screen flex flex-col justify-between bg-light pt-24 md:pt-32 pb-12 overflow-hidden z-0"
+                className="fixed top-0 left-0 w-full min-h-screen flex flex-col justify-between bg-light pt-24 md:pt-32 pb-12 overflow-hidden z-0 will-change-transform"
                 style={{ y: yParallax }}
             >
 

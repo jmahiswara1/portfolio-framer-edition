@@ -3,7 +3,7 @@ export default function Footer() {
     // We achieve this by giving the footer a fixed h-screen or sticky bottom 0, and wrapping the content above it with a solid background.
     return (
         <footer id="footer-section" className="relative w-full h-[700px] md:h-[800px] overflow-hidden">
-            <div className="fixed bottom-0 left-0 w-full h-[700px] md:h-[800px] bg-black px-6 md:px-12 pt-16 md:pt-24 pb-8 flex flex-col justify-between z-0">
+            <div className="fixed bottom-0 left-0 w-full h-[700px] md:h-[800px] bg-black px-6 md:px-12 pt-16 md:pt-24 pb-8 flex flex-col justify-between z-0 will-change-transform [backface-visibility:hidden]">
 
                 {/* Top Half: Contact Info & Links */}
                 <div className="w-full max-w-[1800px] mx-auto flex flex-col lg:flex-row justify-between gap-16">

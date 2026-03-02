@@ -24,7 +24,7 @@ export default function ProjectCard({
         const customBg = '#c8f135';
 
         return (
-            <div className={`h-screen flex items-center justify-center sticky top-0 w-full overflow-hidden p-2 md:p-4 ${i === 0 ? 'bg-light' : 'bg-transparent'}`}>
+            <div className={`h-screen flex items-center justify-center sticky top-0 w-full overflow-hidden p-2 md:p-4 will-change-transform ${i === 0 ? 'bg-light' : 'bg-transparent'}`}>
                 <motion.div
                     style={{
                         top: topSpacing,
@@ -55,7 +55,7 @@ export default function ProjectCard({
     }
 
     return (
-        <div className={`h-screen flex items-center justify-center sticky top-0 w-full overflow-hidden p-2 md:p-4 ${i === 0 ? 'bg-light' : 'bg-transparent'}`}>
+        <div className={`h-screen flex items-center justify-center sticky top-0 w-full overflow-hidden p-2 md:p-4 will-change-transform ${i === 0 ? 'bg-light' : 'bg-transparent'}`}>
             <motion.div
                 style={{
                     top: topSpacing,

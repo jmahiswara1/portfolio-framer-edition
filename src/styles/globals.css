@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
+/* NOTE: scroll-behavior is handled by Lenis, do NOT set it here */
 
 body {
   margin: 0;
@@ -39,6 +37,15 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #0a0a0a;
   border-radius: 3px;
+}
+
+/* GPU layer promotion for performance-critical elements */
+.fixed,
+[style*="position: fixed"] {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

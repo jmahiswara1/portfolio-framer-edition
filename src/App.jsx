@@ -8,10 +8,10 @@ import { ReactLenis } from '@studio-freight/react-lenis';
 
 function App() {
     return (
-        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
+        <ReactLenis root options={{ lerp: 0.12, duration: 1.2, smoothTouch: false }}>
             <div className="min-h-screen text-dark selection:bg-accent selection:text-dark">
                 <Navbar />
-                <main className="relative z-10 bg-light pb-12 rounded-b-[40px] md:rounded-b-[80px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <main className="relative z-10 bg-light pb-12 rounded-b-[40px] md:rounded-b-[80px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
                     <HeroSection />
                     <WorkSection />
                     <AboutSection />
