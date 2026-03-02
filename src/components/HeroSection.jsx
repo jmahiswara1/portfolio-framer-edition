@@ -117,7 +117,7 @@ export default function HeroSection() {
                         <h2 className="text-dark font-display text-xl sm:text-2xl md:text-3xl leading-snug tracking-tight font-medium mb-4 max-w-lg">
                             Hi, I'm Gadang Jatu Mahiswara.
                         </h2>
-                        <p className="text-dark font-display text-xl sm:text-2xl md:text-3xl leading-snug tracking-tight font-medium max-w-lg">
+                        <p className="text-dark font-display text-lg sm:text-xl md:text-2xl text-justify leading-snug tracking-tight font-medium max-w-lg">
                             A Fullstack Developer based in Kediri. Transforming complex ideas into aesthetic, performant, and user-centric digital products.
                         </p>
                     </motion.div>

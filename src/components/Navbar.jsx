@@ -69,7 +69,7 @@ export default function Navbar() {
                         onClick={handleHomeClick}
                         className="text-dark font-display font-semibold text-lg hover:text-accent transition-colors duration-300 pointer-events-auto"
                     >
-                        HOME
+                        GADANG®
                     </a>
                 </div>
             </header>
