@@ -1,64 +1,112 @@
-import AnimatedSection from "./AnimatedSection";
+import { motion, animate, useInView, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+
+const textVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
+};
+
+const AnimatedCounter = ({ value }) => {
+    // Extract base number and suffix
+    const numMatch = value.match(/[\d.]+/);
+    const target = numMatch ? parseFloat(numMatch[0]) : 0;
+    const hasDecimals = value.includes('.');
+    const suffix = value.replace(/[\d.]+/g, '').trim();
+
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, amount: 0.5 });
+    const count = useMotionValue(0);
+
+    useEffect(() => {
+        if (inView) {
+            // Slight delay so the counter starts after the section fades in
+            setTimeout(() => {
+                animate(count, target, { duration: 2.5, ease: "easeOut" });
+            }, 600);
+        }
+    }, [inView, target, count]);
+
+    const display = useTransform(count, (latest) =>
+        (hasDecimals ? latest.toFixed(2) : Math.round(latest)) + (suffix ? suffix : "")
+    );
+
+    return <motion.span ref={ref}>{display}</motion.span>;
+};
 
 export default function AboutSection() {
     return (
-        <AnimatedSection
+        <section
             id="about-section"
-            className="py-24 flex flex-col justify-center border-t border-border bg-dark/50"
+            className="py-24 md:py-32 lg:py-40 bg-light px-6 md:px-12"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div className="max-w-7xl mx-auto w-full">
+                {/* Two-column header */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                    {/* Left: Label */}
+                    <motion.div
+                        className="lg:col-span-3"
+                        variants={textVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
+                        <span className="font-mono text-xs tracking-widest uppercase text-secondary">
+                            (ABOUT)
+                        </span>
+                    </motion.div>
 
-                    {/* Text Content */}
-                    <div className="lg:col-span-7 lg:pr-8">
-                        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-                            ABOUT ME
-                        </h2>
-                        <div className="h-1 w-20 bg-accent rounded-full mb-10"></div>
+                    {/* Right: Content */}
+                    <motion.div
+                        className="lg:col-span-9"
+                        variants={textVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
+                        <p className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-dark leading-[1.15] mb-12">
+                            I am an Informatics Engineering student at State University of Surabaya residing in Kediri, East Java — building efficient and user-centric digital products.
+                        </p>
 
-                        <div className="space-y-6 text-lg text-secondary leading-relaxed">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-secondary text-base md:text-lg leading-relaxed">
                             <p>
-                                Sebagai mahasiswa S1 Teknik Informatika dengan catatan akademis yang solid (IPK 3.74), saya sangat menikmati proses menerjemahkan masalah dunia nyata menjadi produk digital yang efisien dan berpusat pada pengguna.
+                                My interest lies at the intersection of beautiful interfaces (React/Next.js ecosystem) and robust system logic. I believe good design is invisible design.
                             </p>
                             <p>
-                                Ketertarikan saya berada di persimpangan antara antarmuka yang indah (ekosistem React) dan logika sistem yang tangguh. Saya terbiasa berkolaborasi dalam proyek berbasis tim, memecahkan masalah kompleks, dan kini saya sangat antusias untuk membawa pola pikir logis tersebut ke dalam ranah pengolahan dan analisis data.
+                                With a 3.74 GPA and experience building 40+ fullstack projects, I am ready to bring a problem-solving mindset to your team. Currently open for internship and collaboration opportunities.
                             </p>
                         </div>
-                    </div>
-
-                    {/* Optional Visual/Stats Profile Area */}
-                    <div className="lg:col-span-5 hidden sm:block">
-                        <div className="relative aspect-square max-w-sm mx-auto lg:mx-0 lg:ml-auto">
-                            {/* Decorative Frame */}
-                            <div className="absolute inset-0 border-2 border-border translate-x-4 translate-y-4 rounded-lg"></div>
-
-                            {/* Image Container Placeholder */}
-                            <div className="absolute inset-0 bg-border/40 rounded-lg flex flex-col items-center justify-center p-8 backdrop-blur-sm shadow-xl">
-
-                                {/* Fallback Stats if no image */}
-                                <div className="w-full space-y-6">
-                                    <div className="bg-dark/80 rounded-lg p-6 border border-border/50">
-                                        <p className="text-sm font-mono tracking-wider text-secondary mb-1">CUM LAUDE TRACK</p>
-                                        <p className="font-display text-4xl font-bold text-accent">3.74 GPA</p>
-                                    </div>
-
-                                    <div className="bg-dark/80 rounded-lg p-6 border border-border/50">
-                                        <p className="text-sm font-mono tracking-wider text-secondary mb-1">UNIVERSITY</p>
-                                        <p className="font-display pl-0.5 text-xl font-medium text-white">Universitas Negeri Surabaya</p>
-                                    </div>
-
-                                    <div className="bg-dark/80 rounded-lg p-6 border border-border/50">
-                                        <p className="text-sm font-mono tracking-wider text-secondary mb-1">SPECIALIZATION</p>
-                                        <p className="font-display pl-0.5 text-xl font-medium text-white">Full-Stack Developer</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
+                    </motion.div>
                 </div>
+
+                {/* Stats row */}
+                <motion.div
+                    className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 md:mt-28 pt-12 border-t border-dark/10"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
+                >
+                    {[
+                        { value: "3.74", label: "GPA" },
+                        { value: "40+   ", label: "Projects" },
+                        { value: "20+", label: "Tech Stacks" },
+                        { value: "2023", label: "Start Coding" },
+                    ].map((stat) => (
+                        <div key={stat.label} className="text-center md:text-left">
+                            <p className="font-display text-4xl md:text-5xl font-bold text-dark mb-2">
+                                <AnimatedCounter value={stat.value} />
+                            </p>
+                            <p className="font-mono text-xs tracking-widest uppercase text-secondary">
+                                {stat.label}
+                            </p>
+                        </div>
+                    ))}
+                </motion.div>
             </div>
-        </AnimatedSection>
+        </section>
     );
 }

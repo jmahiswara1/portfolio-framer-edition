@@ -11,8 +11,17 @@ export default {
             colors: {
                 accent: "#C8F135",
                 dark: "#0A0A0A",
+                light: "#F2F2F2",
                 secondary: "#888888",
                 border: "#222222",
+            },
+            borderRadius: {
+                '4xl': '48px',
+                '5xl': '60px',
+            },
+            fontSize: {
+                'huge': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '1' }],
+                'mega': ['clamp(5rem, 12vw, 10rem)', { lineHeight: '0.9' }],
             },
         },
     },
