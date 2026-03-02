@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const navLinks = [
@@ -32,6 +32,22 @@ const brandingVariants = {
 };
 
 export default function HeroSection() {
+    // Zoom-proof font size based on physical screen width
+    const [brandingFontSize, setBrandingFontSize] = useState('20vw');
+
+    useEffect(() => {
+        const calcSize = () => {
+            const screenW = window.screen.width;
+            // 20% of physical screen width, clamped between 64px and 320px
+            const size = Math.max(64, Math.min(screenW * 0.2, 320));
+            setBrandingFontSize(`${size}px`);
+        };
+        calcSize();
+        // Recalculate on actual resize (e.g. connecting external monitor), not on zoom
+        window.addEventListener('resize', calcSize);
+        return () => window.removeEventListener('resize', calcSize);
+    }, []);
+
     // Reference for parallax scroll tracking
     const { scrollY } = useScroll();
 
@@ -116,9 +132,9 @@ export default function HeroSection() {
                     animate="visible"
                 >
                     <h1 className="font-display font-black text-accent leading-[0.8] tracking-tighter text-center whitespace-nowrap select-none w-full"
-                        style={{ fontSize: 'clamp(4rem, 20vw, 24rem)' }}
+                        style={{ fontSize: brandingFontSize }}
                     >
-                        GADANG
+                        MAHISWARA
                     </h1>
                 </motion.div>
             </motion.section>

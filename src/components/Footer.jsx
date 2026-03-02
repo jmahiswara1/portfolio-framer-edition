@@ -77,9 +77,9 @@ export default function Footer() {
                     </div>
                     <div className="w-full overflow-hidden flex justify-center items-end">
                         <h1 className="font-display font-black text-[#c8f135] leading-[0.75] tracking-tighter text-center whitespace-nowrap select-none w-full"
-                            style={{ fontSize: 'clamp(5rem, 25vw, 25rem)' }}
+                            style={{ fontSize: 'clamp(5rem, 20vw, 20rem)' }}
                         >
-                            GADANG
+                            MAHISWARA
                         </h1>
                     </div>
                 </div>
