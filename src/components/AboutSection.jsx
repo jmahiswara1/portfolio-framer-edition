@@ -48,7 +48,7 @@ export default function AboutSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
                     {/* Left: Label */}
                     <motion.div
-                        className="lg:col-span-3"
+                        className="lg:col-span-3 flex flex-col gap-8"
                         variants={textVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -57,6 +57,14 @@ export default function AboutSection() {
                         <span className="font-mono text-xs tracking-widest uppercase text-secondary">
                             (ABOUT)
                         </span>
+
+                        <div className="w-full max-w-[240px] aspect-[4/5] overflow-hidden bg-dark/5 grayscale hover:grayscale-0 transition-all duration-500">
+                            <img
+                                src="/profile.jpg"
+                                alt="Gadang Jatu Mahiswara Profile"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </motion.div>
 
                     {/* Right: Content */}
