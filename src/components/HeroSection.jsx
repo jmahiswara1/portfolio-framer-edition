@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import TechBackground from "./TechBackground";
 
 const navLinks = [
     { label: "WORK", href: "#work-section" },
@@ -74,12 +75,13 @@ export default function HeroSection() {
                 className="fixed top-0 left-0 w-full min-h-screen flex flex-col justify-between bg-light pt-24 md:pt-32 pb-12 overflow-hidden z-0 will-change-transform"
                 style={{ y: yParallax }}
             >
+                <TechBackground />
 
                 {/* Main Content Area */}
                 <div className="flex flex-col lg:flex-row w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 z-10 flex-1 lg:mt-12 xl:mt-16 relative">
 
                     {/* Glow Blob */}
-                    <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#c8f135] rounded-full opacity-20 blur-[100px] pointer-events-none -z-10 translate-x-1/3 translate-y-1/3"></div>
+                    {/* <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#c8f135] rounded-full opacity-20 blur-[100px] pointer-events-none -z-10 translate-x-1/3 translate-y-1/3"></div> */}
                     <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#c8f135] rounded-full opacity-20 blur-[100px] pointer-events-none -z-10 -translate-x-1/3 -translate-y-1/3"></div>
 
                     <nav className="flex flex-col w-full lg:w-1/2 mb-8 lg:mb-0 justify-center gap-2">
